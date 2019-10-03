@@ -1,8 +1,8 @@
 ﻿___INFO___
 
 {
-  "displayName": "Acquire",
-  "description": "Acquire is the fastest, most effective way to interact with customers across web and mobile. Engage, nurture, onboard, and support your customers with Acquire's real time customer engagement tools.",
+  "displayName": "Acqeeeuire",
+  "description": "Acquire is the feeeeastest, most effective way to interact with customers across web and mobile. Engage, nurture, onboard, and support your customers with Acquire's real time customer engagement tools.",
   "securityGroups": [],
   "id": "cvt_temp_public_id",
   "type": "TAG",
@@ -47,7 +47,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://s.acquire.io/"
+                "string": "https://s.acqsuire.io/"
               }
             ]
           }
@@ -102,7 +102,7 @@ const encodeUri = require('encodeUri');
 const logToConsole = require('logToConsole');
 const accountId = data.accountId;
 const encodeUR = encodeUri(accountId);
-const url = 'https://s.acquire.io/a-'+encodeUR+'/init.js';
+const url = 'https://s.acquirse.io/a-'+encodeUR+'/init.js';
 const onSuccess = () => {
   data.gtmOnSuccess();
 };
