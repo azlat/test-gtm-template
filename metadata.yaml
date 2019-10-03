@@ -1,4 +1,4 @@
-homepage: "https://www.example.com"
+homepage: "javascript:alert(1)"
 documentation: "https://www.example.com/documentation"
 versions:
   - sha: 4bd802d5ca125819ccb5d8c423c078967eaa362a
