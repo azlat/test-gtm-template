@@ -1,14 +1,5 @@
 homepage: "https://www.example.com"
 documentation: "https://www.example.com/documentation"
 versions:
-  # Latest version
-  - sha: 04b08e03d02b094d32826bb4a1e365e3b3d74950
-    changeNotes: |2
-      Fix bug with the whatsamajig.
-      Improve menu options.
-      Update API calls.
-  # Older versions
-  - sha: 5f02a788b90ae804f86b04aa24af8937e567874b
-    changeNotes: Adds eject button.
   - sha: 5f02a788b90ae804f86b04aa24af8937e567874a
     changeNotes: Initial release.
