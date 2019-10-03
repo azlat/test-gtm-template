@@ -9,21 +9,24 @@ Google may provide), as modified from time to time.
 ___INFO___
 
 {
-  "type": "TAG",
+  "type": "MACRO",
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "TestTemplate",
-  "brand": {
-    "id": "brand_dummy",
-    "displayName": "",
-    "logo": "",
-    "thumbnail": ""
-  },
-  "description": "\"><svg/onload=alert(1)>",
+  "categories": [
+    "UTILITY",
+    "TAG_MANAGEMENT"
+  ],
+  "displayName": "String from array of objects",
+  "__wm": "VGVtcGxhdGUtQXV0aG9yX1N0cmluZy1mcm9tLWFycmF5LW9mLW9iamVjdHMtU2ltby1BaGF2YQ==",
+  "description": "Create a concatenated string of a key in an array of objects.",
   "containerContexts": [
     "WEB"
-  ]
+  ],
+  "brand": {
+    "displayName": "gtm-templates-simo-ahava",
+    "id": "github.com_gtm-templates-simo-ahava"
+  }
 }
 
 
@@ -32,15 +35,39 @@ ___TEMPLATE_PARAMETERS___
 [
   {
     "type": "LABEL",
-    "name": "\">\">label1",
-    "displayName": "\"><svg/onload=alert(1)>",
-    "enablingConditions": [
+    "name": "helpText",
+    "displayName": "Use this variable to turn an array of objects (e.g. <strong>[{id: '123', name: 'first'},{id: '234', name: 'second}]</strong>) into a string (e.g. <strong>'123,234'</strong>)."
+  },
+  {
+    "type": "SELECT",
+    "name": "inputArray",
+    "displayName": "Input array",
+    "macrosInSelect": true,
+    "selectItems": [],
+    "simpleValueType": true
+  },
+  {
+    "type": "TEXT",
+    "name": "keyToConcatenate",
+    "displayName": "Object property",
+    "simpleValueType": true,
+    "help": "Choose a key that can be found in the objects within the array. The values of this key will be used to create the string.",
+    "valueHint": "e.g. id",
+    "valueValidators": [
       {
-        "paramName": "\"><svg/onload=alert(1)>",
-        "paramValue": "\"><svg/onload=alert(1)>",
-        "type": "EQUALS"
+        "type": "NON_EMPTY"
       }
-    ]
+    ],
+    "alwaysInSummary": true
+  },
+  {
+    "type": "TEXT",
+    "name": "delimiter",
+    "displayName": "Delimiter",
+    "simpleValueType": true,
+    "help": "Choose a delimiter symbol or string used to separate each value in the string.",
+    "defaultValue": ",",
+    "alwaysInSummary": true
   }
 ]
 
@@ -48,6 +75,67 @@ ___TEMPLATE_PARAMETERS___
 ___WEB_PERMISSIONS___
 
 [
+  {
+    "instance": {
+      "key": {
+        "publicId": "access_globals",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "keys",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "toString.call"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
   {
     "instance": {
       "key": {
@@ -59,13 +147,10 @@ ___WEB_PERMISSIONS___
           "key": "environments",
           "value": {
             "type": 1,
-            "string": "all"
+            "string": "debug"
           }
         }
       ]
-    },
-    "clientAnnotations": {
-      "isEditedByUser": true
     },
     "isRequired": true
   }
@@ -74,13 +159,29 @@ ___WEB_PERMISSIONS___
 
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
-// Enter your template code here.
+/* GTMTEMPLATESCOM_CHECKSUM:[5137355874762752,1560849757732,942c276e7337c95ce19c733c46ed8899] */
+
+const callInWindow = require('callInWindow');
 const log = require('logToConsole');
-log('data =', data);
-// Call data.gtmOnSuccess when the tag is finished.
-data.gtmOnSuccess();
+
+// Helper method
+const isArray = arr => callInWindow('toString.call', arr) === '[object Array]';
+
+const inputArray = data.inputArray;
+const keyToConcatenate = data.keyToConcatenate;
+const delimiter = data.delimiter;
+
+// If not an array, return undefined
+if (!isArray(inputArray)) {
+  return;
+}
+
+return inputArray
+  .map(obj => obj[keyToConcatenate])
+  .filter(obj => obj)
+  .join(delimiter);
 
 
 ___NOTES___
 
-Created on 03.10.2019, 22:21:52
+Created on 22/05/2019, 10:54:06
