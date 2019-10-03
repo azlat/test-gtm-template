@@ -1,5 +1,5 @@
 homepage: "javascript:alert(1)"
 documentation: "https://www.example.com/documentation"
 versions:
-  - sha: 5f02a788b90ae804f86b04aa24af8937e567874a
+  - sha: dcd3dd4a1ecc15064c3dc5fa34af07562173688f
     changeNotes: Initial release.
