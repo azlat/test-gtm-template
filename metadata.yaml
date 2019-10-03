@@ -1,0 +1,5 @@
+homepage: "javascript:alert(1)",
+documentation: "https://github.com/acquireio/acquire-gtm-template",
+versions:
+  - sha: fd295c324edc6dd6f291160b81a688dd2235bf44
+    changeNotes: First Version
