@@ -1,5 +1,5 @@
 homepage: "https://github.com/azlat/test-gtm-template"
 documentation: "https://github.com/azlat/test-gtm-template"
 versions:
-  - sha: dcd3dd4a1ecc15064c3dc5fa34af07562173688f
+  - sha: 04b08e03d02b094d32826bb4a1e365e3b3d74950
     changeNotes: Initial release.
