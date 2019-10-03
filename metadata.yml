@@ -1,5 +1,5 @@
-homepage: "javascript:alert(1)"
-documentation: "https://www.example.com/documentation"
+homepage: "https://github.com/azlat/test-gtm-template"
+documentation: "https://github.com/azlat/test-gtm-template"
 versions:
   - sha: dcd3dd4a1ecc15064c3dc5fa34af07562173688f
     changeNotes: Initial release.
